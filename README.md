@@ -192,6 +192,7 @@ RootLayout
 
 3. **Deploy**
    - Vercel will automatically build and deploy your application
+   - `/api/resolve` uses `puppeteer-core` + `@sparticuz/chromium` for serverless browser runtime compatibility
    - No environment variables needed!
    - Every push to main branch triggers a new deployment
 
@@ -242,15 +243,17 @@ Resolves a TeraBox share link to direct video URLs.
 ```json
 {
   "success": false,
-  "message": "Unable to resolve this TeraBox link"
+  "code": "TERABOX_RESOLVE_FAILED",
+  "message": "Unable to extract a direct video URL from this TeraBox link. The file may be private, blocked, or require login."
 }
 ```
 
 **Status Codes:**
 - `200` - Successful resolution
-- `400` - Invalid request (missing URL, invalid format)
-- `500` - Server misconfiguration
-- `502` - Resolver API error
+- `400` - `INVALID_LINK`
+- `500` - `CHROME_NOT_FOUND` / `BROWSER_LAUNCH_FAILED`
+- `502` - `TERABOX_RESOLVE_FAILED`
+- `504` - `TIMEOUT`
 
 ## Contributing
 

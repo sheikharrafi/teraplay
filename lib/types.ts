@@ -38,11 +38,19 @@ export interface ResolveSuccessResponse {
     qualities?: Quality[];
 }
 
+export type ResolveErrorCode =
+    | 'INVALID_LINK'
+    | 'CHROME_NOT_FOUND'
+    | 'BROWSER_LAUNCH_FAILED'
+    | 'TERABOX_RESOLVE_FAILED'
+    | 'TIMEOUT';
+
 /**
  * Error response from /api/resolve
  */
 export interface ResolveErrorResponse {
     success: false;
+    code: ResolveErrorCode;
     message: string;
 }
 
