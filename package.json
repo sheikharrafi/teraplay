@@ -13,8 +13,8 @@
         "type-check": "tsc --noEmit"
     },
     "dependencies": {
+        "@sparticuz/chromium": "^149.0.0",
         "next": "^14.2.0",
-        "puppeteer": "^24.31.0",
         "puppeteer-core": "^24.31.0",
         "react": "^18.3.0",
         "react-dom": "^18.3.0"
